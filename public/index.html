@@ -145,6 +145,16 @@
 
 
 
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5035f1e0167852cfc79f53ffbccddb83";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
 
 
 
@@ -249,166 +259,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2017/08/07/JWPlayer播放器快速使用指南(中文文档)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="信达">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/phone.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="信达的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/07/JWPlayer播放器快速使用指南(中文文档)/" itemprop="url">JWPlayer播放器快速使用指南(中文文档)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T22:09:20+08:00">
-                2017-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>文档最后更新时间 <strong>2017年7月26日</strong></p>
-<p>文档基于 <strong>JWPlayer 7.12.2</strong> 版本。</p>
-<p>文档中除了官方API外，还有部分基于官方API封装的扩展功能，扩展部分在文档中有明显标识，若使用扩展功能，需要在项目中额外引用 <strong>xy.jwplayer.js</strong> ，获取方式在本文档快速使用部分。</p>
-</blockquote>
-<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><h3 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h3><p>第一种：通过官方Github项目下载并打包生成（无法使用本文档中注明为扩展的功能）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 克隆项目</span></div><div class="line">git clone https:<span class="comment">//github.com/jwplayer/jwplayer.git</span></div><div class="line"></div><div class="line"><span class="comment">// 进入项目文件夹</span></div><div class="line">cd jwplayer</div><div class="line"></div><div class="line"><span class="comment">// 下载依赖包</span></div><div class="line">npm i </div><div class="line"></div><div class="line"><span class="comment">// 打包</span></div><div class="line">npm run lint</div><div class="line"></div><div class="line"><span class="comment">// 将bin-release/目录放到项目中，并引用jwplayer.js文件即可</span></div></pre></td></tr></table></figure>
-<p>第二种：直接下载文件包（可使用本文档中注明为扩展的功能） <a href="www.baidu.com">JWPlayer 7.12.2及扩展文件包（暂时不能下载）</a></p>
-<h3 id="引入文件"><a href="#引入文件" class="headerlink" title="引入文件"></a>引入文件</h3><p>若仅使用官方API，则在页面中引入 <strong>jwplayer.js</strong>；</p>
-<p>若需要使用官方API和扩展API，则在页面引入 <strong>jwplayer.js</strong> 和 <strong>xy.jwplayer.js</strong> </p>
-<h3 id="写入HTML代码"><a href="#写入HTML代码" class="headerlink" title="写入HTML代码"></a>写入HTML代码</h3><p>在html中为JWPlayer准备好容器，示例中为 <strong><div id="player"></div></strong></p>
-<ol>
-<li>实例化一个JWPlayer对象</li>
-<li>调用setup()函数进行初始化</li>
-</ol>
-<blockquote>
-<p>快速使用完整示例：</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./资源路径/jwplayer.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--如果你需要使用文档中标注为扩展的功能，则需要引用xy.jwplayer.js--&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./资源路径/xy.jwplayer.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"player"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="keyword">var</span> player = jwplayer(<span class="string">'player'</span>);</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">    player.setup(&#123;</span></div><div class="line"><span class="javascript">        file: <span class="string">"//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4"</span>, <span class="comment">// 视频地址</span></span></div><div class="line"><span class="undefined">      </span></div><div class="line"><span class="javascript">      	<span class="comment">// Ps：示例中仅传入了视频地址(file)一个参数，实际可以根据需要配置许多参数，具体参数列表可以查看下方[Api - setup - 初始化配置项]部分     </span></span></div><div class="line"><span class="undefined">    &#125;);</span></div><div class="line"><span class="undefined"> </span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
     
       
 
@@ -570,6 +420,166 @@
 <h3 id="playlistComplete（播放列表全部播放完毕）"><a href="#playlistComplete（播放列表全部播放完毕）" class="headerlink" title="playlistComplete（播放列表全部播放完毕）"></a>playlistComplete（播放列表全部播放完毕）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 代码示例</span></div><div class="line"><span class="keyword">var</span> player = jwplayer(<span class="string">'player'</span>);</div><div class="line"></div><div class="line">player.on(<span class="string">'playlistComplete'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// 当播放列表全部播放完毕时出发</span></div><div class="line">    <span class="comment">// Ps:当播放器设置为循环播放时，该回调方法不会执行</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h2 id="Api-Interactive-交互按钮"><a href="#Api-Interactive-交互按钮" class="headerlink" title="Api - Interactive - 交互按钮"></a>Api - Interactive - 交互按钮</h2><h4 id="addButton-增加一个交互按钮的通用方法"><a href="#addButton-增加一个交互按钮的通用方法" class="headerlink" title="addButton()  增加一个交互按钮的通用方法"></a>addButton()  增加一个交互按钮的通用方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 代码示例</span></div><div class="line"><span class="keyword">var</span> player = jwplayer(<span class="string">'player'</span>);</div><div class="line"></div><div class="line">player.setup(&#123;</div><div class="line">    file: <span class="string">"//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4"</span>,</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 增加一个交互按钮</span></div><div class="line">player.addButton(</div><div class="line">    <span class="comment">// 第一个参数，用来指定添加图形按钮的图片地址</span></div><div class="line">    <span class="string">"//icons.jwplayer.com/icons/white/download.svg"</span>,</div><div class="line">    </div><div class="line">    <span class="comment">// 第二个参数，用来指定鼠标移到按钮上的提示文字</span></div><div class="line">    <span class="string">"快点击我！"</span>,</div><div class="line">    </div><div class="line">    <span class="comment">// 第三个参数，用来指定点击按钮后所执行的代码</span></div><div class="line">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">       <span class="comment">// code</span></div><div class="line">    &#125;,</div><div class="line">    </div><div class="line">    <span class="comment">// 第四个参数，用来为按钮指定一个唯一名称，jwplayer内部使用</span></div><div class="line">    <span class="string">"btn"</span></div><div class="line">);</div></pre></td></tr></table></figure>
 <h4 id="removeButton-删除一个交互按钮的通用方法"><a href="#removeButton-删除一个交互按钮的通用方法" class="headerlink" title="removeButton()  删除一个交互按钮的通用方法"></a>removeButton()  删除一个交互按钮的通用方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 代码示例</span></div><div class="line"><span class="keyword">var</span> player = jwplayer(<span class="string">'player'</span>);</div><div class="line"></div><div class="line">player.setup(&#123;</div><div class="line">    file: <span class="string">"//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4"</span>,</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 删除一个已定义过的交互按钮</span></div><div class="line">player.removeButton(<span class="string">'btn'</span>); <span class="comment">// btn为交互按钮的标识，在定义此按钮时指定，addButton()的第四个参数</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2017/08/07/JWPlayer播放器快速使用指南(中文文档)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="信达">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/phone.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="信达的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/07/JWPlayer播放器快速使用指南(中文文档)/" itemprop="url">JWPlayer播放器快速使用指南(中文文档)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T22:09:20+08:00">
+                2017-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>文档最后更新时间 <strong>2017年7月26日</strong></p>
+<p>文档基于 <strong>JWPlayer 7.12.2</strong> 版本。</p>
+<p>文档中除了官方API外，还有部分基于官方API封装的扩展功能，扩展部分在文档中有明显标识，若使用扩展功能，需要在项目中额外引用 <strong>xy.jwplayer.js</strong> ，获取方式在本文档快速使用部分。</p>
+</blockquote>
+<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><h3 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h3><p>第一种：通过官方Github项目下载并打包生成（无法使用本文档中注明为扩展的功能）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 克隆项目</span></div><div class="line">git clone https:<span class="comment">//github.com/jwplayer/jwplayer.git</span></div><div class="line"></div><div class="line"><span class="comment">// 进入项目文件夹</span></div><div class="line">cd jwplayer</div><div class="line"></div><div class="line"><span class="comment">// 下载依赖包</span></div><div class="line">npm i </div><div class="line"></div><div class="line"><span class="comment">// 打包</span></div><div class="line">npm run lint</div><div class="line"></div><div class="line"><span class="comment">// 将bin-release/目录放到项目中，并引用jwplayer.js文件即可</span></div></pre></td></tr></table></figure>
+<p>第二种：直接下载文件包（可使用本文档中注明为扩展的功能） <a href="www.baidu.com">JWPlayer 7.12.2及扩展文件包（暂时不能下载）</a></p>
+<h3 id="引入文件"><a href="#引入文件" class="headerlink" title="引入文件"></a>引入文件</h3><p>若仅使用官方API，则在页面中引入 <strong>jwplayer.js</strong>；</p>
+<p>若需要使用官方API和扩展API，则在页面引入 <strong>jwplayer.js</strong> 和 <strong>xy.jwplayer.js</strong> </p>
+<h3 id="写入HTML代码"><a href="#写入HTML代码" class="headerlink" title="写入HTML代码"></a>写入HTML代码</h3><p>在html中为JWPlayer准备好容器，示例中为 <strong><div id="player"></div></strong></p>
+<ol>
+<li>实例化一个JWPlayer对象</li>
+<li>调用setup()函数进行初始化</li>
+</ol>
+<blockquote>
+<p>快速使用完整示例：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./资源路径/jwplayer.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--如果你需要使用文档中标注为扩展的功能，则需要引用xy.jwplayer.js--&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./资源路径/xy.jwplayer.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"player"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="keyword">var</span> player = jwplayer(<span class="string">'player'</span>);</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">    player.setup(&#123;</span></div><div class="line"><span class="javascript">        file: <span class="string">"//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4"</span>, <span class="comment">// 视频地址</span></span></div><div class="line"><span class="undefined">      </span></div><div class="line"><span class="javascript">      	<span class="comment">// Ps：示例中仅传入了视频地址(file)一个参数，实际可以根据需要配置许多参数，具体参数列表可以查看下方[Api - setup - 初始化配置项]部分     </span></span></div><div class="line"><span class="undefined">    &#125;);</span></div><div class="line"><span class="undefined"> </span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 
           
         
