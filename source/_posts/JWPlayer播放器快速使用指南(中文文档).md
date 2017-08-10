@@ -5,8 +5,6 @@ categories: JavaScript
 date: 2017-08-07 22:09:20
 tags:
 ---
-> 文档最后更新时间 **2017年7月26日**
-
 > 文档基于 **JWPlayer 7.12.2** 版本。
 
 > 文档中除了官方API外，还有部分基于官方API封装的扩展功能，扩展部分在文档中有明显标识，若使用扩展功能，需要在项目中额外引用 **xy.jwplayer.js** ，获取方式在本文档快速使用部分。
@@ -15,25 +13,9 @@ tags:
 
 ### 下载文件
 
-第一种：通过官方Github项目下载并打包生成（无法使用本文档中注明为扩展的功能）
+第一种(推荐)：直接下载 **JWPlayer7.12.2 + xy.jwplayer.min.js** 文件包   [点此下载](http://ouh8ga02y.bkt.clouddn.com/xy-jwplayer.zip)
 
-```javascript
-// 克隆项目
-git clone https://github.com/jwplayer/jwplayer.git
-
-// 进入项目文件夹
-cd jwplayer
-
-// 下载依赖包
-npm i 
-
-// 打包
-npm run lint
-
-// 将bin-release/目录放到项目中，并引用jwplayer.js文件即可
-```
-
-第二种：直接下载文件包（可使用本文档中注明为扩展的功能） [JWPlayer 7.12.2及扩展文件包（暂时不能下载）](www.baidu.com)
+第二种：通过官方Github下载并打包生成，不包含 **xy.jwplayer.min.js** 文件  [Github地址](https://github.com/jwplayer/jwplayer)
 
 ### 引入文件
 
