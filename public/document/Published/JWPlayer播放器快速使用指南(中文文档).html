@@ -1,0 +1,547 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>markdownToc</title>
+    <link rel="stylesheet" type="text/css" href="../common/github2-rightpart.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../common/github1-contents.css">
+    <link rel="stylesheet" href="../common/zTreeStyle.css" type="text/css">
+    <style>
+        .ztree li a.curSelectedNode {
+            padding-top: 0px;
+            background-color: #FFE6B0;
+            color: black;
+            height: 16px;
+            border: 1px #FFB951 solid;
+            opacity: 0.8;
+        }
+        .ztree{
+            overflow: auto;
+            height:100%;
+            min-height: 200px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body style="">
+<div id="header" style="width:27%;height:100px;padding:20px 30px;background:rgba(0,0,0,0);box-shadow:none;border:0;position: fixed;top: 0;left: 0;z-index:999999;box-sizing: border-box">
+    <a href="http://www.xinda.site" style="font-size: 28px;font-weight: bold;color:#000;">
+        信达的博客
+    </a>
+    <p style="margin-left: 10px;font-size: 14px;color:#666;font-weight: 100;margin:0;margin-top:6px;">
+            JWPlayer播放器快速使用指南(中文文档)
+        </p>
+</div>
+<div>
+    <div style="width:30%;">
+        <ul id="tree" class="ztree" style="width: 30%;margin-top:100px; overflow: auto; position: fixed; z-index: 2147483647; border: 0px none; left: 0px; bottom: 0px;">
+            <!-- 目录内容在网页另存为之后将插入到此处 -->
+        </ul>
+    </div>
+    <div id="readme" style="width:70%;margin-left:25%;">
+        <article class="markdown-body">
+
+
+
+
+
+
+
+        <p>本文档基于 <strong>JWPlayer 7.12.2</strong> 版本。</p>
+<p>文档中除了官方API外，还有部分基于官方API封装的扩展功能，扩展部分在文档中有明显标识，若使用扩展功能，需要在项目中额外引用 <strong>xy.jwplayer.js</strong> ，获取方式在本文档快速使用部分。</p>
+<h2>快速使用</h2>
+<h3>下载文件</h3>
+<p> 官方文件和扩展文件   <a href='http://ouh8ga02y.bkt.clouddn.com/xy-jwplayer.zip'>点此下载</a> ，下载后解压，将整个文件夹放入项目中。</p>
+<h3>引入文件</h3>
+<p>若仅使用官方API，则在页面中引入 <strong>jwplayer.js</strong>；</p>
+<p>若需要使用官方API和扩展API，则在页面引入 <strong>jwplayer.js</strong> 和 <strong>xy.jwplayer.js</strong> </p>
+<h3>写入HTML代码</h3>
+<ol start='' ><li>
+在html中为JWPlayer准备好容器</li>
+<li>
+实例化一个JWPlayer对象</li>
+<li>
+调用setup()函数进行初始化</li>
+</ol>
+<blockquote><p>快速使用完整示例：</p>
+</blockquote>
+<pre><code class='language-html' lang='html'>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;script src=&quot;./资源路径/jwplayer.js&quot;&gt;&lt;/script&gt;
+    &lt;!--如果你需要使用文档中标注为扩展的功能，则需要引用xy.jwplayer.js--&gt;
+  	&lt;script src=&quot;./资源路径/xy.jwplayer.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;player&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+    var player = jwplayer(&#39;player&#39;);
+
+    player.setup({
+      	// 视频地址
+        file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;, 
+      
+        /*
+        *  Ps：示例中仅传入了视频地址(file)一个参数
+        *  实际可以根据需要配置许多参数
+        *  具体参数列表可以查看下方[初始化配置项]部分
+        * */
+
+    });
+ 
+&lt;/script&gt;
+
+&lt;/html&gt;
+</code></pre>
+<h2>初始化选项</h2>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    // 将要播放的视频地址
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;, 
+    // 视频播放前显示的图片
+    image: &quot;https://www.nvsay.com/uploads/allimg/160408/34-16040Q61P21U.jpg&quot;,
+    // 播放器加载完毕后是否自动播放视频，true自动播放，false不自动播放
+    autostart:false,
+    // 设置播放器的音量，1-100之间
+    volume:100,
+    //播放器是否静音
+    mute:false,
+    // 设置播放器的宽度
+    width:640,
+    // 设置播放器的高度
+    height:360,
+    // 播放完当前视频后，是否继续播放播放列表中的下一个视频
+    repeat:true,
+});
+</code></pre>
+<h2>JWPlayer属性</h2>
+<h4>获取宽度 getWidth()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+var playerWidth = player.getWidth();
+
+console.log(playerWidth); 
+// log -&gt; 播放器宽度
+</code></pre>
+<h4>获取高度 getHeight()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+var playerHeight = player.getHeight();
+
+console.log(playerHeight); 
+// log -&gt; 播放器高度
+</code></pre>
+<h4>获取播放列表 getPlaylist()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+var playList = player.getPlaylist();
+
+console.log(playList); 
+// 本例log -&gt; [object]
+// 如果播放列表中有多个播放项，log -&gt; [object，object，···]
+</code></pre>
+<h4>获取完整DOM getContainer()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+var playerDOM = player.getContainer();
+
+console.log(playerDOM); 
+// log -&gt; 播放器的完整DOM
+</code></pre>
+<h4>获取列表索引值 getPlaylistIndex()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 获取当前视频在播放列表中的索引值
+
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+var playListIndex = player.getPlaylistIndex();
+
+console.log(playListIndex); 
+// log -&gt; 当前视频在播放列表中的索引值，如：1
+</code></pre>
+<h4>获取列表指定项信息 getPlaylistItem(index)</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+var playListItem = player.getPlaylistItem(0);
+
+console.log(playListItem); 
+// log -&gt; 播放列表中第一项的信息
+</code></pre>
+<h2>JWPlayer控制函数</h2>
+<h4>播放视频 play()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+$(&#39;#btn&#39;).click(function(){
+    // 视频将开始播放
+    player.play();    
+})
+</code></pre>
+<h4>暂停播放 pause()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+$(&#39;#btn&#39;).click(function(){
+    // 视频将暂停
+    player.pause();
+})
+</code></pre>
+<h4>播放下一项 playlistNext()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+$(&#39;#btn&#39;).click(function(){
+    // 视频将切换至播放列表中的下一项
+    player.playlistNext();
+})
+</code></pre>
+<h4>播放列表指定项 playlistItem(index)</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+$(&#39;#btn&#39;).click(function(){
+    // 视频将切换到播放列表的第1项
+    player.playlistItem(0);
+})
+</code></pre>
+<h4>视频跳转指定秒 seek(<em>position</em>)</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+$(&#39;#btn&#39;).click(function(){
+    // 视频将切换到第10秒
+    player.seek(10);
+})
+</code></pre>
+<h4>改变播放器宽高 resize(<em>width</em>, <em>height</em>)</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+$(&#39;#btn&#39;).click(function(){
+    // 播放器宽度将改为640px，高度将改为360px
+    player.resize(640,360);
+})
+</code></pre>
+<h4>更新播放列表 load()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+// 准备好播放列表
+var newPlayList = [
+  {
+    file:&#39;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&#39;
+  },
+  {
+    file:&#39;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&#39;
+  },{
+    file:&#39;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&#39;
+  }
+];
+
+$(&#39;#btn&#39;).click(function(){
+    // 更新播放器的播放列表
+    player.load(newPlayList);
+})
+</code></pre>
+<h4>视频前插广告[扩展] xyJWPlayerAddAddBefore(obj,url,isShut,shutImgUrl)</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+/*
+ * 监听视频准备完毕
+ *   当视频准备完毕时，xyJWPlayerAddAd，在视频中插入一段广告
+ *   调取插入广告方法，参数:
+ *      1.播放器实例化对象
+ *      2.广告地址
+ *      3.广告是否允许跳过,true/false，默认为true
+ *      4.广告图标地址，参数3为false，此参数则不会被使用
+ * */
+player.on(&#39;ready&#39;,function () {
+  
+  xyJWPlayerAddAddBefore(
+    
+    //第一个参数，播放器实例化对象
+    player,
+    
+    // 第二个参数，广告地址
+    &#39;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&#39;,
+    
+    // 第三个参数，广告是否允许跳过,true/false，默认为true
+    true,
+    
+    // 第四个参数，广告图标地址，参数3为false，此参数则不会被使用
+    &#39;./src/skip.png&#39;
+  );
+  
+ })
+</code></pre>
+<h4>立即插入广告[扩展] xyJWPlayerAddAd(obj,url,isShut,shutImgUrl)</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+/*
+ * 点击按钮在视频当前位置插入一段广告
+ *      1.播放器实例化对象
+ *      2.广告地址
+ *      3.广告是否允许跳过,true/false，默认为true
+ *      4.广告图标地址，参数3为false，此参数则不会被使用
+ * */
+$(&#39;#btn&#39;).click(function(){
+  
+  	xyJWPlayerAddAd(
+    
+    //第一个参数，播放器实例化对象
+    player,
+    
+    // 第二个参数，广告地址
+    &#39;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&#39;,
+    
+    // 第三个参数，广告是否允许跳过,true/false，默认为true
+    true,
+    
+    // 第四个参数，广告图标地址，参数3为false，此参数则不会被使用
+    &#39;./src/skip.png&#39;
+  );
+  
+});
+</code></pre>
+<h4>删除实例 remove()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+// 调用后实例被销毁
+player.remove();
+</code></pre>
+<h2>JWPlayer回调</h2>
+<h4>初始化完成 ready</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.on(&#39;ready&#39;,function(){
+    // 在这里编写的代码将在播放器初始化完毕后执行
+    // 这是一个最早触发的API
+})
+</code></pre>
+<h4>任何动作 all</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.on(&#39;all&#39;,function(){
+    // 在这里编写的代码在播放器执行任何操作后都会执行
+})
+</code></pre>
+<h4>开始缓冲 buffer</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 一般是第一次播放时才会触发
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.on(&#39;buffer&#39;,function(){
+    // 在这里编写的代码将在开始缓存时执行
+    // 一般是第一次开始播放时触发
+})
+</code></pre>
+<h4>初始化出错 setupError</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+player.on(&#39;setupError&#39;,function(){
+    // 在初始化出现错误时执行
+})
+</code></pre>
+<h4>实例销毁后 remove</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.on(&#39;remove&#39;,function(){
+	// 当实例被销毁时执行
+})
+</code></pre>
+<h4>列表更新后 playlist</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.on(&#39;playlist&#39;,function(){
+	// 当更新播放列表时执行
+})
+</code></pre>
+<h4>切换视频后 playlistItem</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.on(&#39;playlistItem&#39;,function(){
+	// 当切换播放列表中的项时执行，如：播放下一个视频
+})
+</code></pre>
+<h4>列表播放完毕 playlistComplete</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.on(&#39;playlistComplete&#39;,function(){
+	// 当播放列表全部播放完毕时出发
+    // Ps:当播放器设置为循环播放时，该回调方法不会执行
+})
+</code></pre>
+<h2>JWPlayer交互按钮</h2>
+<h4>增加按钮通用方法 addButton()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+// 增加一个交互按钮
+player.addButton(
+    // 第一个参数，用来指定添加图形按钮的图片地址
+    &quot;//icons.jwplayer.com/icons/white/download.svg&quot;,
+    
+    // 第二个参数，用来指定鼠标移到按钮上的提示文字
+    &quot;快点击我！&quot;,
+    
+    // 第三个参数，用来指定点击按钮后所执行的代码
+    function() {
+       // code
+    },
+    
+    // 第四个参数，用来为按钮指定一个唯一名称，jwplayer内部使用
+    &quot;btn&quot;
+);  
+</code></pre>
+<h4>删除按钮通用方法 removeButton()</h4>
+<pre><code class='language-javascript' lang='javascript'>
+// 代码示例
+var player = jwplayer(&#39;player&#39;);
+
+player.setup({
+    file: &quot;//content.jwplatform.com/videos/xJ7Wcodt-cIp6U8lV.mp4&quot;,
+});
+
+// 删除一个已定义过的交互按钮
+player.removeButton(&#39;btn&#39;); 
+// btn为交互按钮的标识，在定义此按钮时指定，addButton()的第四个参数
+</code></pre>
+<p></p>
+<p></p>
+<p></p>
+        </article>
+    </div>
+</div>
+<script src="../common/jquery-1.10.2.min.js"></script>
+<script src="../common/jquery.ztree.all-3.5.min.js"></script>
+<script src="../common/jquery.ztree_toc.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#tree').ztree_toc({
+            is_auto_number:false,
+            documment_selector:'.markdown-body',
+            is_expand_all: true
+        });
+    });
+</script>
+</body>
+</html>
