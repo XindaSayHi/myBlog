@@ -4,11 +4,11 @@
 ## githu地址: https://github.com/hexojs/hexo/
 
 # Site
-title: XinDa' Blog
-subtitle:
-description: 谦逊执着 自由无畏
+title: 信达的博客
+subtitle: 谦逊执着，自由无畏，凡事未必尽如心意，只求问心无愧。
+description: 谦逊执着，自由无畏，凡事未必尽如心意，只求问心无愧。
 author: 信达
-language: zh-Hans
+language: zh-CN
 timezone:
 
 # URL
@@ -41,7 +41,7 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
 
 # 主页设置 - Home page setting
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: maupassant
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
