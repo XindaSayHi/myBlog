@@ -11,6 +11,8 @@ tags: JS插件,视频播放器
 
 ## 快速使用
 
+因文档较长，这里还准备了一份带目录的文档：[点击查看](http://xinda.site/document/published/JWPlayer%E6%92%AD%E6%94%BE%E5%99%A8%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97(%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3).html)
+
 ### 下载文件
 
  官方文件和扩展文件   [点此下载](http://ouh8ga02y.bkt.clouddn.com/xy-jwplayer.zip) ，下载后解压，将整个文件夹放入项目中。
