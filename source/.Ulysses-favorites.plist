@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>order</key>
+	<array>
+		<string>_posts/JWPlayer播放器中文使用文档.md</string>
+	</array>
+	<key>resolutionData</key>
+	<dict>
+		<key>order</key>
+		<dict>
+			<key>_posts/JWPlayer播放器中文使用文档.md</key>
+			<dict>
+				<key>lastModification</key>
+				<real>530098416.989712</real>
+				<key>version</key>
+				<dict>
+					<key>10806334def126d9fd25084b224c34b0be1f43eeff31c5ff940cfe309efe3ebf</key>
+					<integer>8</integer>
+				</dict>
+			</dict>
+		</dict>
+	</dict>
+	<key>storeFormatVersion</key>
+	<integer>1</integer>
+	<key>versioning</key>
+	<dict>
+		<key>order</key>
+		<dict>
+			<key>10806334def126d9fd25084b224c34b0be1f43eeff31c5ff940cfe309efe3ebf</key>
+			<integer>8</integer>
+		</dict>
+	</dict>
+</dict>
+</plist>

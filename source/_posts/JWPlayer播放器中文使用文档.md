@@ -1,5 +1,5 @@
 ---
-title: JWPlayer播放器使用指南(中文文档)
+title: JWPlayer播放器中文使用文档
 categories: JavaScript
 作者: 信达
 date: 2017-08-07 22:09:20
@@ -57,7 +57,7 @@ tags: JS插件,视频播放器
         *  实际可以根据需要配置许多参数
         *  具体参数列表可以查看下方[初始化配置项]部分
         * */
-
+        * 
     });
  
 </script>
