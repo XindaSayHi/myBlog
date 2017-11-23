@@ -3,7 +3,9 @@ title: JWPlayer播放器中文使用文档
 categories: JavaScript
 作者: 信达
 date: 2017-08-07 22:09:20
-tags: JS插件,视频播放器
+tags: 
+- JS插件
+- 视频播放器
 ---
 本文档基于 **JWPlayer 7.12.2** 版本。
 
