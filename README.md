@@ -2,6 +2,7 @@
 ## 博客文章列表
 
 ### 2017年11月
+- [《图解HTTP》学习笔记(2) - 简单的HTTP请求](http://xinda.site/2017/11/23/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2-%E7%AE%80%E5%8D%95%E7%9A%84HTTP%E8%AF%B7%E6%B1%82/)
 - [《图解HTTP》学习笔记(1) - 基础知识](http://xinda.site/2017/11/23/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/)
 
 ### 2017年8月
