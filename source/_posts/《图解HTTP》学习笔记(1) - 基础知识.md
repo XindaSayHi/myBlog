@@ -6,8 +6,9 @@ date: 2017-11-23 11:50:10
 tags: HTTP,TCP/IP
 ---
 
-## 使用HTTP协议访问Web
+
 当查看一个网站时，在浏览器中输入一个URL后，客户端(比如浏览器)会从Web服务端获取资源，Web客户端到服务器端的一系列运作流程，遵循一种名为HTTP的协议(HyperText Transfer Protocol)，也叫超文本传输协议。
+
 ## HTTP的发展历史
 #### 1989年3月HTTP诞生
 最初设想的基本理念是：借助多文档之间相互关联形成的超文本，连成可相互参阅的WWW（world wide web,万维网）
