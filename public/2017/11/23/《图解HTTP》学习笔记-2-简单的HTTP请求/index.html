@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="谦逊执着，自由无畏，凡事未必尽如心意，只求问心无愧。"><title> | 信达的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">信达的博客</h1><a id="logo" href="/.">信达的博客</a><p class="description">谦逊执着，自由无畏，凡事未必尽如心意，只求问心无愧。</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-meta">Nov 23, 2017</div><div class="post-content"><h2 id="HTTP协议用于客户端和服务端之间的通信"><a href="#HTTP协议用于客户端和服务端之间的通信" class="headerlink" title="HTTP协议用于客户端和服务端之间的通信"></a>HTTP协议用于客户端和服务端之间的通信</h2><p>应用HTTP协议时，必定一方为客户端，另一方为服务端。<br><a id="more"></a><br><strong>HTTP协议支持的方法</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>支持的HTTP协议版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>获取资源</td>
+<td>1.0、1.1</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>传输实体主体</td>
+<td>1.0、1.1</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>传输文件</td>
+<td>1.0、1.1</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>获得报文首部</td>
+<td>1.0、1.1</td>
+</tr>
+<tr>
+<td>DETELE</td>
+<td>删除文件</td>
+<td>1.0、1.1</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>询问支持的方法</td>
+<td>1.1</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>追踪路径</td>
+<td>1.1</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>要求用隧道协议链接代理</td>
+<td>1.1</td>
+</tr>
+<tr>
+<td>LINK</td>
+<td>建立和资源之间的联系</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>UNLINK</td>
+<td>断开连接关系</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="HTTP的持久连接和管线化"><a href="#HTTP的持久连接和管线化" class="headerlink" title="HTTP的持久连接和管线化"></a>HTTP的持久连接和管线化</h3><p>在HTTP的初始版本中，没进行一次HTTP请求就会断开一次TCP连接，之前因为传输的文件容量很小，因此没有什么问题，但随着HTTP的普及， 文档中传送大量图片的情况多了起来。</p>
+<p>比如，使用浏览器访问一个包含多张图片的页面时，除了请求HTML页面之外，还需要请求里面的其他资源，因此会造成无畏的TCP链接和断开，增加通信量的开销。</p>
+<h4 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h4><p>为了解决频繁进行TCP连接和断开的问题，HTTP/1.1想到了持久连接的办法，持久连接的特点是，只要一端没有明确提出断开连接，则保持TCP连接状态。这样的方法减少了TCP连接和断开的无畏开销，降低了服务器的负担，从而可以提高页面的加载速度。</p>
+<h4 id="管线化"><a href="#管线化" class="headerlink" title="管线化"></a>管线化</h4><p>持久连接使得请求管线化传输成为了可能，之前数据的传递是串联进行的，就是说一个请求在接收到返回之后，下一个请求才会开始，而管线化是指，下一个请求不必等到上一个请求返回再开始，请求可以一个一个的接连开始，管线化技术比持久连接技术更能提高请求速度，且请求数越多，时间差距越明显。</p>
+<h3 id="使用Cookie进行状态管理"><a href="#使用Cookie进行状态管理" class="headerlink" title="使用Cookie进行状态管理"></a>使用Cookie进行状态管理</h3><p>HTTP是一个无状态协议，就是说它不会根据之前的请求和返回去处理当前请求，如果一个需要登录认证的web页面将状态记录放到了服务端，那么就需要在每次跳转页面之后重新进行登录。</p>
+<p>无状态协议是它的优势，由于不需要记录状态，自然可以减少对CPU及内存的消耗，另一方面，也正是因为HTTP协议十分简单，才会被应用到各个场景中去。</p>
+<p>为了既保留无状态协议的优势，又能够解决类似的问题，于是引入了Cookie技术，通过在请求和返回的报文信息中加入Cookie信息，来控制客户端的状态。</p>
+<p>Cookie会根据服务端返回的报文中的set-Cookie字段，通知客户端保存Cookie，当下次客户端再次向服务端发起请求时，会自动携带这个Cookie信息，服务端接到Cookie后，会通过Cookie判断客户端状态。</p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://localhost:4000/2017/11/23/《图解HTTP》学习笔记-2-简单的HTTP请求/" data-id="cjacjma8t000071ol505w1cru" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACoElEQVR42u3aMZLjMAwEwP3/p33x1Za1MwDp26tqRgosia2AoIf4+orH63F8/+XzXbPff7/32MDDw8O7MPX8ZQnm+TnP4PZz4+Hh4d3jvZvo83XOe/v6R1Iynx8seHh4eL+AlxeGfNM8Kxh4eHh4/wsv33w/F4M8ScDDw8P7nbx8mZ4FEy1jFvji4eHhfYZ3aoH+5PWV8z08PDy89al6u+DmgUUedmwGHh4e3g1evuAmyE3wmnya4Tzx8PDwjvJmwejZ2GITPfzwFjw8PLxrvE3DU7L5TtpPkyShjirw8PDwLvD2kUG7/Z2R2kKFh4eHd4+XL+jtAf+sJSt5fvFLPDw8vAu8TSiwiX3bjXXyBwAPDw/vX/HaRXm23Ldb7eTz4eHh4X2Sl2x584OrNnRoAausBQ8PD2/NmzWk5otyHnDkk65LAh4eHt4FXsvO78pbEE4Vqr+u8fDw8C7w2sU6f/2si6ENMoblAQ8PD2/BSw6TNlOZfbi2AEQlAQ8PD+8CLz92ystJWyRmJeHtHPDw8PA+yNtEtEk03DZazT4fHh4e3g1efqzVBr5ta2kbahSfDA8PD+8o7xWPdmPdLvGzQOSHmAMPDw/vAm9YSdYH/O1029giQuLh4eEd4uWb4GRR3hxo7Vu+8PDw8O7x8j//syP/2bJ+KhTGw8PD+wxvFhnMAohZjFtQ8fDw8K7x2mAiv2sDnjWE4eHh4d3jvcpxto3gqxz19hoPDw/vAm/z6DxQyIvE7PrAwMPDwyt5m2KQb7g37VmbEAQPDw/vHi9pI2iPuzbx7mbbXZza4eHh4X2ElwS17aHa2TKDh4eH9/t5Cfv5yW2cUWz68fDw8K7x2pbTNmZto41TRQUPDw/vBq/9k78PDvbB8TEYHh4eXsf7A4JE993QEACXAAAAAElFTkSuQmCC" class="article-share-link">分享</a><div class="tags"></div><div class="post-nav"><a href="/2017/11/23/《图解HTTP》学习笔记-1-基础知识/" class="next">《图解HTTP》学习笔记(1) - 基础知识</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://localhost:4000"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术笔记/">技术笔记</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/JS插件-视频播放器/" style="font-size: 15px;">JS插件,视频播放器</a> <a href="/tags/HTTP-TCP-IP/" style="font-size: 15px;">HTTP,TCP/IP</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">信达的博客.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
