@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="谦逊执着，自由无畏，凡事未必尽如心意，只求问心无愧。"><title>《图解HTTP》学习笔记(3) - HTTP报文中的HTTP信息 | 信达的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">《图解HTTP》学习笔记(3) - HTTP报文中的HTTP信息</h1><a id="logo" href="/.">信达的博客</a><p class="description">谦逊执着，自由无畏，凡事未必尽如心意，只求问心无愧。</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">《图解HTTP》学习笔记(3) - HTTP报文中的HTTP信息</h1><div class="post-meta">Nov 24, 2017<span> | </span><span class="category"><a href="/categories/技术笔记/">技术笔记</a></span></div><div class="post-content"><p>HTTP通信过程包括从客户端发往服务端的请求及从服务端返回客户端的响应，这一部分主要讲了HTTP的请求和响应是如何运作的。</p>
+<a id="more"></a>
+<h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p>HTTP协议交互的信息叫做HTTP报文，客户端的HTTP报文叫做请求报文，服务端的叫做响应报文，报文大致可以分为报文首部和报文主体两部分，两部分中间由空行划分。</p>
+<h2 id="请求报文和响应报文的格式"><a href="#请求报文和响应报文的格式" class="headerlink" title="请求报文和响应报文的格式"></a>请求报文和响应报文的格式</h2><p>请求报文和响应报文的结构如下</p>
+<p><img src="http://ouf94m87t.bkt.clouddn.com/WX20171123-224432.png" alt=""></p>
+<p><img src="http://ouf94m87t.bkt.clouddn.com/WX20171123-224517.png" alt=""></p>
+<p>请求报文和响应报文的首部内容由以下数据组成：</p>
+<h4 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h4><p>包含请求方法、请求URI以及HTTP版本</p>
+<h4 id="状态行"><a href="#状态行" class="headerlink" title="状态行"></a>状态行</h4><p>包含请求结果的状态码、原因短语和HTTP版本</p>
+<h4 id="首部字段"><a href="#首部字段" class="headerlink" title="首部字段"></a>首部字段</h4><p>包含表示请求和响应的各种条件和属性的各类首部，一般有4种首部，分别是：通用首部、请求首部、响应首部和实体首部。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>可能包含HTTP的RFC里未定义的首部(Cookie等)</p>
+<h2 id="编码提升传输速率"><a href="#编码提升传输速率" class="headerlink" title="编码提升传输速率"></a>编码提升传输速率</h2><p>HTTP在传输数据的过程中，既可以按照数据原貌进行传递，也可以在传输过程中通过编码来提高传输速率。通过在传输时编码，能够有效的处理大量的访问请求。但是编码的操作需要计算机来完成，因此会消耗更多的CPU资源。</p>
+<h4 id="报文主体和实体主体的差异"><a href="#报文主体和实体主体的差异" class="headerlink" title="报文主体和实体主体的差异"></a>报文主体和实体主体的差异</h4><ul>
+<li>报文</li>
+</ul>
+<p>是HTTP通信中的基本单位，由8位组字节流组成，通过HTTP通信传输。</p>
+<ul>
+<li>实体</li>
+</ul>
+<p>作为请求或响应的有效载荷数据被传输，其内容由实体首部和实体主体组成。</p>
+<p>HTTP报文的主体用来传输请求或响应的实体主体。</p>
+<p>通常情况下，报文主体等于实体主体，只有当传输中进行编码操作时，实体主体的内容发生变化，才导致他和报文主体产生差异。</p>
+<h4 id="压缩传输的内容编码"><a href="#压缩传输的内容编码" class="headerlink" title="压缩传输的内容编码"></a>压缩传输的内容编码</h4><p>在发送邮件的时候，为了让发送的邮件体积变小，我们会先把文件压缩之后再发送，HTTP中有一种叫做内容编码的功能与之类似。</p>
+<p>常用的内容编码方式有以下几种：</p>
+<ul>
+<li>gzip(GUN zip)</li>
+<li>compress （UNIX系统标准压缩）</li>
+<li>deflate（zlib）</li>
+<li>identity（不进行编码）</li>
+</ul>
+<h4 id="分割发送的分块传输编码"><a href="#分割发送的分块传输编码" class="headerlink" title="分割发送的分块传输编码"></a>分割发送的分块传输编码</h4><p>在HTTP传输过程中，请求的编码实体资源尚未全部传输完成之前，浏览器无法显示页面，在传输较大容量的数据时，将数据分割成多块，能够让浏览器逐步显示页面。<strong>这种把实体分块的功能称为分块传输编码</strong>。</p>
+<p>分块传输编码会将实体分成多个部分，每一块都会用十六进制来标记大小，而实体的最后一块会使用“0(CR_LF)”来表示，使用分块传输编码时，接受数据的客户端负责解码</p>
+<h3 id="发送多种数据的多部分对象集合"><a href="#发送多种数据的多部分对象集合" class="headerlink" title="发送多种数据的多部分对象集合"></a>发送多种数据的多部分对象集合</h3><p>发送邮件时，我们可以在邮件中写入文字并添加多种类型附件，这是因为采用了MIME(多用途因特网邮件扩展)机制，它允许邮件处理不同类型的数据。例如，图片等二进制数据以ASCII码字符串编码的方式指明，就是利用MIME来描述标记数据类型，而在MIME扩展中会使用一种称为多部分对象集合的方法，来容纳多份不同类型的数据。</p>
+<p>相应的HTTP也采纳了多部分对象集合，发送的一份报文主体内可含有多类型实体，通常是在图片或者文本文档上传时使用。</p>
+<p>多部分对象集合包含的对象如下</p>
+<p><strong>multipart/from-data</strong></p>
+<p>在Web表单文件上传时使用</p>
+<p><strong>multipart/byteranges</strong></p>
+<p>状态码206(部分内容)响应报文包含了多个规范的内容时使用</p>
+<p><img src="http://ouf94m87t.bkt.clouddn.com/%E5%9B%BE%E8%A7%A3HTTP+%E5%BD%A9%E8%89%B2%E7%89%88%2540www.java1234.com.png" alt=""></p>
+<p>在HTTP中使用多部分对象合集时，需要再首部字段里加上Content-type。</p>
+<h3 id="获取部分内容的范围请求"><a href="#获取部分内容的范围请求" class="headerlink" title="获取部分内容的范围请求"></a>获取部分内容的范围请求</h3><p>以前用户无法通过高速带宽访问互联网，如果一个较大的文件下载到一半出现网络中断，那么再次链接网络之后就需要再次重新下载，为了解决这个问题，需要有一种机制，可以支持从断掉的地方继续下载。通过指定下载的实体范围可以达到这样的效果，指定范围发送的请求被称为范围请求。</p>
+<p>比如对于一份10000字节大小的资源，使用范围请求，可以只下载其中的一部分，比如5000字节至10000字节。</p>
+<p>使用范围请求，需要用到首部字段Range在指定byte的范围，byte的指定方式如下。</p>
+<ul>
+<li>5001 ~ 10000字节</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Range:<span class="attribute">bytes</span>=5000-10000</div></pre></td></tr></table></figure>
+<ul>
+<li>5001字节之后的全部</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Range:<span class="attribute">bytes</span>=5000-</div></pre></td></tr></table></figure>
+<ul>
+<li>1-3000字节和5000-7000字节</li>
+</ul>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Range:1<span class="string">-3000</span>, 5000<span class="string">-7000</span></div></pre></td></tr></table></figure>
+<p>对于范围请求，响应会返回状态码206的响应报文，另外对于多重范围请求，响应报文会在首部字段Contenr-Type表明multipart/byteranges后返回响应报文。</p>
+<p>如果服务端无法响应范围请求，则会返回200状态和完成的实体内容。</p>
+<h3 id="内容协商返回最合适的内容"><a href="#内容协商返回最合适的内容" class="headerlink" title="内容协商返回最合适的内容"></a>内容协商返回最合适的内容</h3><p>同一个Web页面可能存在多份内容相同的页面，比如英文版和中文版，，他们虽然内容上相同，但是语言不同，当浏览器的默认语言切换为中文或者英文时，访问相同的Web页面会显示不同的语言，这样的机制被称为内容协商。</p>
+<p>内容协商机制就是客户端和服务端就响应的资源内容进行交涉，提供给用户最合适的资源，内容协商会以语言、字符集、编码方式等基准判断响应的资源。</p>
+<p>内容写上一般有下面三种的类型</p>
+<ul>
+<li>服务器驱动协商</li>
+</ul>
+<p>由服务器端进行内容协商，以请求的首部字段作为参考，在服务器端自动处理。但对用户来说，以浏览器发送的信息作为判定依据，并不一定能筛选出最优内容。</p>
+<ul>
+<li>客户端驱动协商</li>
+</ul>
+<p>由客户端进行内容协商的方式，用户从浏览器显示的可选列表中手动选择，还可以选择通过JS在页面上自动选择的方式。</p>
+<ul>
+<li>透明协商</li>
+</ul>
+<p>是服务器驱动和客户端驱动的结合体，是由服务器端和客户端各自进行内容协商的一种方法。</p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://localhost:4000/2017/11/24/《图解HTTP》学习笔记-3-HTTP报文中的HTTP信息/" data-id="cjadmjz3p0000wuol7ehpjvv3" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJklEQVR42u3awW4iQQwE0Pz/T7PXSCugqs1IjPPmFE1g6NccCtv98xNfj1/X/3d+3//93/b5kzX8XHFhY2Nj34T9eHm9fk27xM+Cn/0drRYbGxt7Hfv1gp5F1OsAa4Mt36ZkC958LjY2NjZ2UBK8jsM8Gs+2ABsbGxt7HiftnbZphY2NjY3dNpXauDprP7WFx+W9NGxsbOyvZ7eD2G/++5L5NjY2NvYXsx/lddagb8cMbTTWCmxsbOxF7LNDMy0sGSrkA+OzMgMbGxt7N/vsQMzksM784E6LxMbGxt7Kbg/K5OExKWySMW37ZGxsbOzd7Hww0I5mk/DLN7G98zQOsbGxsRexrxsAt6OCz5Y0F068sbGxsb+SPR/o5vFzdlwyeVe7KmxsbOwd7LwkmLSEkk0shrJlmYSNjY29m51/fDsqmDT0kyZUXho9fS82Njb2anbbfG+bR9cdyqmbStjY2Ng3Z7clRHs4Jn99G1T5+KFIbGxsbOwbstsAOytIJk9rj/sUYYmNjY29iH3WxDlrBrVRN9/iYkiAjY2NfXN28u+2eEhaTvNhw9kTsLGxsXew8x/9kziZP+dsbdFJJWxsbOybs9tWzjzw2lFxPio4PLKDjY2NvYLdvm0STu3i8nZ/Ww5hY2Nj72PncfW6SdSGTduWaoOt/p6xsbGxb8U+KwPan/vtjKIth9o2GTY2NvY+9iTSrouiSbny5l3Y2NjYS9l5w2gyTkhqo/zLSO68CTBsbGzsRez2J37ywXnMzEOuWA82Njb2InY+0G3bN+2dZGR71pB6+jRsbGzsdezJUs4W1x64yWMsKoqwsbGxl7LzwmB+pCYJv+vaXtjY2Nj72HnhkY8E8qIi2bh8Q5OvEBsbG3sH+1FeZ2PXs8NAZ6OLaD3Y2NjYi9j5lYdKfpjyU9uUP63eAmxsbOybsJOl542bz8ZSMiQ4PAyKjY2NvY59VjC0raVkcZOoq3tp2NjY2H+SfXZ05uxoThuo+bABGxsbGzuPisnr5wGGjY2N/XfYeeOmjbF8wDAPs2J4gI2Njb2IfdagmQyA2wZTDmsP9GBjY2PfnP0PfKNy3mOaiwIAAAAASUVORK5CYII=" class="article-share-link">分享</a><div class="tags"><a href="/tags/HTTP/">HTTP</a><a href="/tags/TCP-IP/">TCP/IP</a></div><div class="post-nav"><a href="/2017/11/23/《图解HTTP》学习笔记-2-简单的HTTP请求/" class="next">《图解HTTP》学习笔记(2) - 简单的HTTP请求</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://localhost:4000"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术笔记/">技术笔记</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/HTTP/" style="font-size: 15px;">HTTP</a> <a href="/tags/TCP-IP/" style="font-size: 15px;">TCP/IP</a> <a href="/tags/JS插件/" style="font-size: 15px;">JS插件</a> <a href="/tags/视频播放器/" style="font-size: 15px;">视频播放器</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">信达的博客.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
