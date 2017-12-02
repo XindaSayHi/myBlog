@@ -1,6 +1,6 @@
 ---
 title: 《图解HTTP》学习笔记(3) - HTTP报文中的HTTP信息
-categories: 技术笔记
+categories: 技术笔记本
 作者: 信达
 date: 2017-11-24 16:07:28
 tags: 

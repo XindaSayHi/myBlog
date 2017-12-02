@@ -1,6 +1,6 @@
 ---
 title: 《图解HTTP》学习笔记(1) - 基础知识
-categories: 技术笔记
+categories: 技术笔记本
 作者: 信达
 date: 2017-11-23 11:50:10
 tags: 

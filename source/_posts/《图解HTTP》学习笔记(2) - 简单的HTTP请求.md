@@ -1,6 +1,6 @@
 ---
 title: 《图解HTTP》学习笔记(2) - 简单的HTTP请求
-categories: 技术笔记
+categories: 技术笔记本
 作者: 信达
 date: 2017-11-23 22:01:06
 tags: 
