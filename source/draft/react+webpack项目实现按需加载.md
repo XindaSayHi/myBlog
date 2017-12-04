@@ -8,7 +8,7 @@
 
 从分割文件方面，require.ensure()函数会创建一个chunk，如果一个chunk的名称已经存在了，那么本次所指定依赖的模块将合并到已经存在的chunk中去，最后在webpack构建项目时会单独生成一个文件。
 
-下面介绍一些require.ensure()函数的参数
+下面介绍一下require.ensure()函数的参数
 
 **参数1：**dependencies 依赖模块的数组
 
