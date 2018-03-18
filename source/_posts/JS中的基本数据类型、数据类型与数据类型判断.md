@@ -20,6 +20,29 @@ PS：`symbol` 这种数据类型，是在ES6标准中新增的，它表示一个
 
 JS中的基本数据类型有：`undefined`  `null` `boolean` `number` `string`  `symbol`
 
+## 各数据类型
+
+### Undefined类型
+
+undefined类型只有一个值，就是undefined。
+
+在使用var声明一个变量但未对其进行初始化时，变量的值就等于undefined，比如：
+
+```javascript
+var message;
+console.log(message == undefined); // log => true
+```
+
+### Null类型
+
+null类型同样只有一个值，就是null。从逻辑上来讲，null表示一个空的对象指针，因此使用typeof检测时会返回object，示例如下：
+
+```javascript
+var cat = null;
+```
+
+
+
 ## 判断数据类型
 
 开发中如果需要判断数据类型，我们可以根据不同的场景选择下面的几种方法，为了方便理解，我们先定义下面几个变量，这些变量涵盖了各种数据类型的数据，如下
